@@ -86,33 +86,38 @@
         }
     });
 
-    // Handle image upload
-    $(document).ready(function () {
-        $('button').click(function () {
-            // Show modal
-            $('#uploadModal').modal('show');
-        });
-
-        $('#uploadForm').on('submit', function (e) {
-            e.preventDefault();
-            var formData = new FormData(this);
-
-            $.ajax({
-                url: '/upload_image',
-                type: 'POST',
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function (data) {
-                    // Display the result
-                    $('#resultModal .modal-body').html('<p>Result: ' + data.result + '</p>');
-                    $('#resultModal').modal('show');
-                },
-                error: function () {
-                    alert('An error occurred. Please try again.');
+        // Function to open the modal when the button is clicked
+        $(document).ready(function () {
+            $('#uploadImageButton').click(function () {
+                $('#uploadImageModal').modal('show');
+            });
+    
+            $('#submitImageButton').click(function () {
+                var formData = new FormData();
+                var fileInput = $('#fileInput')[0];
+                if (fileInput.files.length > 0) {
+                    formData.append('image', fileInput.files[0]);
+    
+                    $.ajax({
+                        url: '/upload_image',
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function (response) {
+                            $('#uploadImageModal').modal('hide');
+                            $('#predictionResult').text('Prediction: ' + response.result);
+                            $('#resultModal').modal('show');
+                        },
+                        error: function (error) {
+                            $('#uploadImageModal').modal('hide');
+                            alert('Error occurred: ' + error.responseText);
+                        }
+                    });
+                } else {
+                    alert('Please select an image.');
                 }
             });
         });
-    });
-
-})(jQuery);
+    
+    })(jQuery);
