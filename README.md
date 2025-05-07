@@ -1,6 +1,6 @@
 # 🎗️ Scancer – AI-Powered Breast Cancer Detection Tool
 
-**Scancer is an AI-driven diagnostic tool designed to assist healthcare professionals in detecting breast cancer using ultrasound images and cell nuclei measurements. By integrating deep learning and traditional machine learning techniques, ScanCecr delivers fast, accurate classifications of breast tumors as benign or malignant through an intuitive, web-based interface.
+Scancer is an AI-driven diagnostic tool designed to assist healthcare professionals in detecting breast cancer using ultrasound images and cell nuclei measurements. By integrating deep learning and traditional machine learning techniques, Scancer delivers fast, accurate classifications of breast tumors as benign or malignant through an intuitive, web-based interface.
 
 ---
 
